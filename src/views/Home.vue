@@ -28,6 +28,7 @@ export default {
       data: {}
     }
   },
+  //计算属性
   computed: {
     images() {
       if (this.data.banner) {
