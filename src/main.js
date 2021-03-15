@@ -7,8 +7,12 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 
 import { Lazyload } from 'vant';
-
 Vue.use(Lazyload);
+
+// import { Grid, GridItem } from 'vant';
+
+// Vue.use(Grid);
+// Vue.use(GridItem);
 
 Vue.config.productionTip = false
 Vue.use(Vant)
