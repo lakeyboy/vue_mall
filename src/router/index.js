@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Category from '../views/Category.vue'
+
 
 Vue.use(VueRouter)
 
@@ -10,6 +12,7 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  //下面就是组件按需加载，不是直接导入的
   // {
   //   path: '/about',
   //   name: 'About',
@@ -18,6 +21,11 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
+  {
+    path: '/category',
+    component: Category
+  }
+
 ]
 
 const router = new VueRouter({

@@ -1,7 +1,7 @@
 <template>
   <div id="home" class="home">
     <van-search
-      v-model="value"
+      v-model="searchValue"
       placeholder="商品搜索,299款好物"
       input-align="left"
       shape="round"
@@ -59,23 +59,12 @@
         :thumb="item.list_pic_url"
       />
     </div>
-
-    //底部导航
-    <van-tabbar v-model="tabActive">
-      <van-tabbar-item class="iconfont icon-shouye">首页</van-tabbar-item>
-      <van-tabbar-item class="iconfont icon-zhuanti">专题</van-tabbar-item>
-      <van-tabbar-item class="iconfont icon-leimupinleifenleileibie2"
-        >分类</van-tabbar-item
-      >
-      <van-tabbar-item class="iconfont icon-gouwucheman"
-        >购物车</van-tabbar-item
-      >
-      <van-tabbar-item class="iconfont icon-wode">我的</van-tabbar-item>
-    </van-tabbar>
+    <tab-Btn />
   </div>
 </template>
 
 <script>
+import tabBtn from '@/components/tabBtn'
 // @ is an alias to /src
 import axios from 'axios'
 import api from '@/assets/config/api'
@@ -84,10 +73,12 @@ export default {
   name: 'Home',
   data() {
     return {
-      value: '',
-      data: {},
-      tabActive: 0
+      searchValue: '',
+      data: {}
     }
+  },
+  components: {
+    tabBtn
   },
   //计算属性
   computed: {
@@ -138,7 +129,7 @@ export default {
     const { data: res } = await axios.get(api.IndexUrl)
     this.data = res.data
 
-    console.log(this.data)
+    // console.log(this.data)
   }
 }
 </script>
