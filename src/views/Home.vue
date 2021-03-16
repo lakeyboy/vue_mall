@@ -62,11 +62,15 @@
 
     //底部导航
     <van-tabbar v-model="tabActive">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="home-o">专题</van-tabbar-item>
-      <van-tabbar-item icon="search">分类</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">购物车</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+      <van-tabbar-item class="iconfont icon-shouye">首页</van-tabbar-item>
+      <van-tabbar-item class="iconfont icon-zhuanti">专题</van-tabbar-item>
+      <van-tabbar-item class="iconfont icon-leimupinleifenleileibie2"
+        >分类</van-tabbar-item
+      >
+      <van-tabbar-item class="iconfont icon-gouwucheman"
+        >购物车</van-tabbar-item
+      >
+      <van-tabbar-item class="iconfont icon-wode">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>

@@ -1,0 +1,44 @@
+{
+  "id": "2422394",
+  "name": "mall",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1305",
+      "name": "购物车满",
+      "font_class": "gouwucheman",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "689261",
+      "name": "类目 品类 分类 类别.2",
+      "font_class": "leimupinleifenleileibie2",
+      "unicode": "e7f8",
+      "unicode_decimal": 59384
+    },
+    {
+      "icon_id": "7483115",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e707",
+      "unicode_decimal": 59143
+    },
+    {
+      "icon_id": "9097245",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "15736828",
+      "name": "专题",
+      "font_class": "zhuanti",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    }
+  ]
+}

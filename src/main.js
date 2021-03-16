@@ -10,12 +10,14 @@ import { Lazyload } from 'vant';
 Vue.use(Lazyload);
 
 // import { Grid, GridItem } from 'vant';
-
 // Vue.use(Grid);
 // Vue.use(GridItem);
 
 Vue.config.productionTip = false
 Vue.use(Vant)
+
+// 引入字体样式
+import '@/assets/font/iconfont.css'
 
 
 
