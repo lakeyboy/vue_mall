@@ -142,9 +142,9 @@ export default {
   }
   //直销
   .brandlist {
-    .van-image {
-      margin: -16px -8px;
-    }
+    // .van-image {
+    //   margin: -16px -8px;
+    // }
 
     h4 {
       margin-block: 0;
@@ -152,8 +152,10 @@ export default {
     p {
       margin-block: 0;
     }
-    .van-grid-item__content {
-      color: red;
+    // 解决由于scoped 影响 样式无法穿透的问题  /deep/
+    /deep/.van-grid-item__content {
+      padding: 0;
+      // color: red;
     }
 
     .title {

@@ -25,6 +25,7 @@
             :text="item.name"
             v-for="(item, index) in subCategoryList"
             :key="index"
+            :to="`/categoryList/${item.id}`"
           />
         </van-grid>
       </template>
