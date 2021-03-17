@@ -39,6 +39,22 @@
     <!-- 商品详情 -->
     <!-- v-html 可以解析标签 -->
     <div class="proDetail" v-html="info.goods_desc"></div>
+    //购物车界面
+    <van-goods-action>
+      <van-goods-action-icon icon="cart-o" text="购物车" />
+      <van-goods-action-icon icon="star-o" text="已收藏" color="" />
+      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-button type="danger" text="立即购买" />
+    </van-goods-action>
+
+    <!-- 选择商品规格 -->
+    <van-sku
+      v-model="show"
+      :sku="sku"
+      :goods="goods"
+      @buy-clicked="onBuyClicked"
+      @add-cart="onAddCartClicked"
+    />
   </div>
 </template>
 
@@ -55,7 +71,18 @@ export default {
       data: {},
       info: {},
       //  商品参数
-      attribute: []
+      attribute: [],
+      // 显示
+      show: true,
+      sku: {
+        // 数据结构见下方文档
+      },
+      goods: {
+        // 数据结构见下方文档
+      },
+      messageConfig: {
+        // 数据结构见下方文档
+      }
     }
   },
   async created() {
@@ -82,7 +109,11 @@ export default {
   methods: {
     onClickLeft() {
       this.$router.go(-1)
-    }
+    },
+    // 点击购买
+    onBuyClicked() {},
+    // 加入购物车
+    onAddCartClicked() {}
   }
 }
 </script>
