@@ -6,28 +6,42 @@
       <span>满88元免邮费</span>
     </div>
     <div class="list">
-      <van-card
-        num="2"
-        price="2.00"
-        desc="描述信息"
-        title="商品标题"
-        thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
-      >
-        <template #tags>
-          <van-tag plain type="danger">标签</van-tag>
-          <van-tag plain type="danger">标签</van-tag>
-        </template>
-        <template #footer>
-          <van-button size="mini">按钮</van-button>
-          <van-button size="mini">按钮</van-button>
-        </template>
-      </van-card>
+      <div class="cartItem" v-for="(item, index) in cartList" :key="index">
+        <van-checkbox
+          @change="checkEvent($event, item)"
+          v-model="item.checked"
+        ></van-checkbox>
+        <van-image
+          fit="cover"
+          width="100"
+          height="100"
+          :src="item.list_pic_url"
+        />
+        <div class="proInfo">
+          <div class="title">
+            <span class="name">{{ item.goods_name }}</span>
+            <span class="num">x{{ item.number }}</span>
+          </div>
+          <p class="brief">{{ item.goods_specifition_name_value }}</p>
+          <p class="price">￥{{ item.retail_price }}</p>
+        </div>
+      </div>
     </div>
+    <!-- 底部统计 -->
+    <van-submit-bar
+      :price="cartTotal.checkedGoodsAmount * 100"
+      button-text="提交订单"
+      @submit="onSubmit"
+    >
+      <van-checkbox v-model="checkedAll">全选</van-checkbox>
+    </van-submit-bar>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import axios from 'axios'
+import api from '@/assets/config/api.js'
 
 // 映射state中的数据
 let mapStateObj = mapState(['cartList', 'cartTotal'])
@@ -38,6 +52,18 @@ export default {
   },
   //更新数据
   computed: {
+    checkedAll: {
+      set(val) {
+        console.log(val)
+      },
+      get() {
+        if (this.cartTotal.goodsCount == this.cartTotal.checkedGoodsCount) {
+          return true
+        } else {
+          return false
+        }
+      }
+    },
     ...mapStateObj
   },
   created() {
@@ -47,13 +73,27 @@ export default {
   //
   mounted() {
     setTimeout(() => {
-      console.log(this.cartList)
+      console.log(this.cartTotal)
     }, 1000)
 
     // console.log(this.cartTotal)
   },
 
-  methods: {}
+  methods: {
+    // 提交订单
+    onSubmit() {},
+    async checkEvent(event, item) {
+      let {
+        data: { data: res }
+      } = await axios.post(api.CartChecked, {
+        isChecked: Number(event),
+        productIds: item.product_id
+      })
+      // console.log(res)
+      this.$store.commit('setCartList', res.cartList)
+      this.$store.commit('setCartTotal', res.cartTotal)
+    }
+  }
 }
 </script>
 
@@ -79,6 +119,39 @@ export default {
       height: 4px;
       border-radius: 2px;
       border: 2px solid red;
+    }
+  }
+  .cartItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    .van-checkbox {
+      margin: 0 5px;
+    }
+    .van-img {
+      background: #efefef;
+    }
+    .proInfo {
+      // 占据剩余空间
+      flex: 1;
+      display: flex;
+      // 设置垂直方向
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 100px;
+      padding: 0 10px;
+
+      .title {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .brief {
+        color: #999;
+        font-size: 12px;
+      }
     }
   }
 }
